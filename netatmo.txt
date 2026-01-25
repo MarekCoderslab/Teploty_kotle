@@ -1,0 +1,6 @@
+appName= Teplota_netatmo
+description= API pro netatmo
+data protection officer name= N/A
+data protection officer email= marek.dejdar@gmail.com
+clientID= 6975d41d173e20a68d0a6585
+clientSecret= SDTuaVw1ZMC8xhJ8vlozLqx1a
