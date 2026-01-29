@@ -4,3 +4,5 @@ data protection officer name= N/A
 data protection officer email= marek.dejdar@gmail.com
 clientID= 6975d41d173e20a68d0a6585
 clientSecret= SDTuaVw1ZMC8xhJ8vlozLqx1a
+
+curl -X POST https://api.netatmo.com/oauth2/token -d "grant_type=password" -d "client_id=6975d41d173e20a68d0a6585" -d "client_secret=SDTuaVw1ZMC8xhJ8vlozLqx1a" -d "username=marek.dejdar@gmail.com" -d "password=m.Dejdam1" -d "scope=read_station"
