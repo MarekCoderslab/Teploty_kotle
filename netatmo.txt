@@ -6,3 +6,143 @@ clientID= 6975d41d173e20a68d0a6585
 clientSecret= SDTuaVw1ZMC8xhJ8vlozLqx1a
 
 curl -X POST https://api.netatmo.com/oauth2/token -d "grant_type=password" -d "client_id=6975d41d173e20a68d0a6585" -d "client_secret=SDTuaVw1ZMC8xhJ8vlozLqx1a" -d "username=marek.dejdar@gmail.com" -d "password=1m.Dejdam2" -d "scope=read_station"
+
+curl -X POST https://api.netatmo.com/oauth2/token \
+  -d "grant_type=authorization_code" \
+  -d "client_id=6975d41d173e20a68d0a6585" \
+  -d "client_secret=SDTuaVw1ZMC8xhJ8vlozLqx1a" \
+  -d "code=42d3d599935ceaf58d6e9bb0f94f4c53" \
+  -d "redirect_uri=https://localhost/"
+
+  curl -X POST https://api.netatmo.com/oauth2/token \ -d "grant_type=authorization_code" \ -d "client_id=..." \ -d "client_secret=..." \ -d "code=f3bfeb805a41107943bd169856b6530a" \ -d "redirect_uri=https://localhost/"
+
+  curl -X POST "https://api.netatmo.com/oauth2/token" -d "grant_type=authorization_code" -d "client_id=6975d41d173e20a68d0a6585" -d "client_secret=SDTuaVw1ZMC8xhJ8vlozLqx1a" -d "code=4fd1a206c16b85c06b920338c6b5bec8" -d "redirect_uri=https://localhost/"
+
+curl -X POST "https://api.netatmo.com/oauth2/token" -d "grant_type=authorization_code" -d "client_id=6975d41d173e20a68d0a6585" -d "client_secret=SDTuaVw1ZMC8xhJ8vlozLqx1a" -d "code=SEM_DOPLŇ_NOVÝ_CODE" -d "redirect_uri=https://localhost/"
+
+https://api.netatmo.com/oauth2/authorize?client_id=6975d41d173e20a68d0a6585&redirect_uri=https%3A%2F%2Flocalhost%2F&scope=read_station&response_type=code
+
+curl -X POST "https://api.netatmo.com/oauth2/token" -d "grant_type=authorization_code" -d "client_id=6975d41d173e20a68d0a6585" -d "client_secret=SDTuaVw1ZMC8xhJ8vlozLqx1a" -d "code=cdcbbb2550d14e107e03e5402214c18a" -d "redirect_uri=https://localhost/"
+
+https://api.netatmo.com/oauth2/authorize?client_id=6975d41d173e20a68d0a6585&redirect_uri=https%3A%2F%2Fwww.google.com%2F&scope=read_station&response_type=code
+
+curl -X POST "https://api.netatmo.com/oauth2/token" -d "grant_type=authorization_code" -d "client_id=6975d41d173e20a68d0a6585" -d "client_secret=SDTuaVw1ZMC8xhJ8vlozLqx1a" -d "code=6bbc7f94c52658f8a9bf1ca1dc39417c" -d "redirect_uri=https://www.google.com/"
+
+{"access_token":"57d2c0b1ec135e95028b456c|4cd53fb132f82187256c70294c199d23","refresh_token":"57d2c0b1ec135e95028b456c|a61458c1810493062c24b347eb854903","expires_in":10800,"expire_in":10800,"scope":["read_station"]}% 
+
+https://api.netatmo.com/oauth2/authorize?
+client_id=6975d41d173e20a68d0a6585&
+redirect_uri=https://localhost/callback&
+scope=read_station read_home read_thermostat read_homecoach&
+response_type=code
+
+curl -X POST https://api.netatmo.com/oauth2/token -d grant_type=password -d client_id=6986ceaef493ff65c90bd0c4 -d client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY -d username=marek.dejdar@gmail.com -d password=1m.Dejdam2 -d scope=read_station -d redirect_uri=https://localhost/callback
+curl -X POST https://api.netatmo.com/oauth2/token -d grant_type=authorization_code -d client_id=6986ceaef493ff65c90bd0c4 -d client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY -d code=424c4dbc97648086cb9593bc70f1fca7 -d redirect_uri=https://localhost/callback
+curl -X POST https://api.netatmo.com/oauth2/token -d grant_type=authorization_code -d client_id=6986ceaef493ff65c90bd0c4 -d client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY -d code=375b9d17ffde4cf82ac050f034381681 -d redirect_uri=https://localhost/callback
+curl -X POST https://api.netatmo.com/oauth2/token -d grant_type=authorization_code -d client_id=6986ceaef493ff65c90bd0c4 -d client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY -d code=a2016e8c3d96f48f725dc108e6d60eee -d redirect_uri=https://localhost/callback
+curl -X POST https://api.netatmo.com/oauth2/token -d grant_type=authorization_code -d client_id=6986ceaef493ff65c90bd0c4 -d client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY -d code=TVŮJ_AUTHORIZATION_CODE -d redirect_uri=https://localhost/callback
+
+curl -X POST https://api.netatmo.com/oauth2/token -d grant_type=refresh_token -d client_id=6986ceaef493ff65c90bd0c4 -d client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY -d refresh_token=8e347b8b9e0a98304f240b691a2afe8d
+
+https://dev.netatmo.com/apps/
+
+curl -X GET "https://api.netatmo.com/api/homesdata" \
+     -H "Authorization: Bearer <ACCESS_TOKEN>"
+
+
+curl -X POST "https://api.netatmo.com/oauth2/token" \
+     -d "grant_type=authorization_code" \
+     -d "client_id=6986ceaef493ff65c90bd0c4" \
+     -d "client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY" \
+     -d "code=d364bc2f912d3f05a49725641e9f0bd1" \
+     -d "redirect_uri=https://localhost/callback"
+{"access_token":"57d2c0b1ec135e95028b456c|ff039cba9441cf8f47bebaaf57799605","refresh_token":"57d2c0b1ec135e95028b456c|180acba0754f16dbf1440a660332638c","expires_in":10800,"expire_in":10800,"scope":["read_thermostat","read_station"]}%    
+
+curl -X POST "https://api.netatmo.com/oauth2/token" \
+     -d "grant_type=refresh_token" \
+     -d "refresh_token=57d2c0b1ec135e95028b456c|180acba0754f16dbf1440a660332638c" \
+     -d "client_id=6986ceaef493ff65c90bd0c4" \
+     -d "client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY"
+{"access_token":"57d2c0b1ec135e95028b456c|180ebbd5abe7e38b8947eefffde44a31","refresh_token":"57d2c0b1ec135e95028b456c|180acba0754f16dbf1440a660332638c","expires_in":10800,"expire_in":10800,"scope":["read_thermostat","read_station"]}% 
+
+curl -X GET "https://api.netatmo.com/api/homesdata" \
+     -H "Authorization: Bearer 57d2c0b1ec135e95028b456c|c75746736d6a3721e5a1ce014ca55501"
+{"body":{"homes":[{"id":"5923ef916d1dbdb79a8b476c","name":"Palackeho","altitude":226,"coordinates":[15.421978,50.033354],"country":"CZ","timezone":"Europe\/Prague","rooms":[{"id":"892103435","name":"My room","type":"livingroom","module_ids":["04:00:00:07:5d:c4"]},{"id":"1982554036","name":"Doma","type":"livingroom","module_ids":["70:ee:50:28:e4:b0"]},{"id":"4051925557","name":"Venkovn\u00ed","type":"outdoor","module_ids":["02:00:00:b2:c6:78","70:ee:50:07:51:6c"]}],"modules":[{"id":"70:ee:50:28:e4:b0","type":"NAMain","name":"Doma","setup_date":1492359664,"room_id":"1982554036","modules_bridged":["02:00:00:b2:c6:78"]},{"id":"02:00:00:b2:c6:78","type":"NAModule1","name":"Venkovn\u00ed Modul","setup_date":1707416635,"room_id":"4051925557","bridge":"70:ee:50:28:e4:b0"},{"id":"70:ee:50:07:51:6c","type":"NAPlug","name":"Palackeho","setup_date":1473430377,"room_id":"4051925557","modules_bridged":["04:00:00:07:5d:c4"]},{"id":"04:00:00:07:5d:c4","type":"NATherm1","name":"Thermostat","setup_date":1473430378,"room_id":"892103435","bridge":"70:ee:50:07:51:6c"}],"temperature_control_mode":"heating","therm_mode":"schedule","therm_setpoint_default_duration":720,"schedules":[{"timetable":[{"zone_id":1,"m_offset":0},{"zone_id":0,"m_offset":180},{"zone_id":1,"m_offset":1320},{"zone_id":0,"m_offset":1620},{"zone_id":1,"m_offset":2760},{"zone_id":0,"m_offset":3060},{"zone_id":1,"m_offset":4200},{"zone_id":0,"m_offset":4500},{"zone_id":1,"m_offset":5640},{"zone_id":0,"m_offset":5940},{"zone_id":1,"m_offset":9960}],"zones":[{"name":"\u00dasporn\u00fd","id":4,"type":5,"rooms_temp":[{"room_id":"892103435","temp":20}],"modules":[],"rooms":[{"id":"892103435","therm_setpoint_temperature":20}]},{"name":"Noc","id":1,"type":1,"rooms_temp":[{"room_id":"892103435","temp":21}],"modules":[],"rooms":[{"id":"892103435","therm_setpoint_temperature":21}]},{"name":"Komfortn\u00ed","id":0,"type":0,"rooms_temp":[{"room_id":"892103435","temp":22}],"modules":[],"rooms":[{"id":"892103435","therm_setpoint_temperature":22}]}],"name":"Default","default":false,"away_temp":15,"hg_temp":7,"id":"57d2c36cc6aa42ab288b45f2","type":"therm","selected":true}]}],"user":{"email":"marek.dejdar@gmail.com","language":"cs","locale":"cs-CZ","feel_like_algorithm":0,"unit_pressure":0,"unit_system":0,"unit_wind":0,"id":"57d2c0b1ec135e95028b456c"}},"status":"ok","time_exec":0.0949239730834961,"time_server":1770542526}% 
+
+refresh
+curl -X POST "https://api.netatmo.com/oauth2/token" \
+     -d "grant_type=refresh_token" \
+     -d "refresh_token=57d2c0b1ec135e95028b456c|180acba0754f16dbf1440a660332638c" \
+     -d "client_id=6986ceaef493ff65c90bd0c4" \
+     -d "client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY"
+{"access_token":"57d2c0b1ec135e95028b456c|ad364813aff4073b37d76f9de1e27a48","refresh_token":"57d2c0b1ec135e95028b456c|180acba0754f16dbf1440a660332638c","expires_in":10800,"expire_in":10800,"scope":["read_thermostat","read_station"]}% 
+
+curl -X GET "https://api.netatmo.com/api/homestatus?home_id=5923ef916d1dbdb79a8b476c" \
+     -H "Authorization: Bearer 57d2c0b1ec135e95028b456c|c75746736d6a3721e5a1ce014ca55501"
+{"status":"ok","time_server":1770543656,"body":{"home":{"id":"5923ef916d1dbdb79a8b476c","rooms":[{"id":"892103435","reachable":true,"anticipating":false,"open_window":false,"therm_measured_temperature":22.2,"therm_setpoint_temperature":22,"therm_setpoint_start_time":1770454372,"therm_setpoint_end_time":0,"therm_setpoint_mode":"schedule"}],"modules":[{"id":"70:ee:50:07:51:6c","type":"NAPlug","firmware_revision":251,"rf_strength":107,"wifi_strength":49},{"id":"04:00:00:07:5d:c4","type":"NATherm1","battery_state":"full","battery_level":4402,"firmware_revision":79,"rf_strength":64,"reachable":true,"boiler_valve_comfort_boost":false,"bridge":"70:ee:50:07:51:6c","boiler_status":false},{"id":"70:ee:50:28:e4:b0","type":"NAMain","firmware_revision":300,"wifi_state":"high","wifi_strength":59,"ts":1770543654,"temperature":21.1,"co2":562,"humidity":56,"noise":35,"pressure":1010,"absolute_pressure":983.3},{"id":"02:00:00:b2:c6:78","type":"NAModule1","battery_state":"medium","battery_level":5342,"firmware_revision":53,"rf_state":"high","rf_strength":61,"last_seen":1770543620,"reachable":true,"bridge":"70:ee:50:28:e4:b0","ts":1770543210,"temperature":3.6,"humidity":95}]}}}%                        
+
+1) Místnost (Room)
+------------------
+Room ID	892103435
+Reachable	true
+Open window	false
+Indoor temp (therm_measured_temperature)	21.6 °C
+Setpoint	22 °C
+Setpoint mode	schedule
+Heating (boiler_status)	true
+Setpoint start	1770454372
+Setpoint end	0
+2) Moduly
+---------
+2.1 NAPlug (Bridge)
+-------------------
+ID	70:ee:50:07:51:6c
+Typ	NAPlug
+Firmware	251
+RF strength	109
+WiFi strength	50
+2.2 NATherm1 (Termostat)
+------------------------
+ID	04:00:00:07:5d:c4
+Typ	NATherm1
+Battery state	full
+Battery level	4402
+Firmware	79
+RF strength	68
+Reachable	true
+Boiler status	true
+Comfort boost	false
+Bridge	70:ee:50:07:51:6c
+2.3 NAMain (Indoor modul)
+-------------------------
+ID	70:ee:50:28:e4:b0
+Typ	NAMain
+Firmware	300
+WiFi state	high
+WiFi strength	60
+Timestamp	1770573205
+Indoor temperature	20.9 °C
+CO₂	720 ppm
+Humidity	57 %
+Noise	35 dB
+Pressure	1011.1 hPa
+Absolute pressure	984.3 hPa
+2.4 NAModule1 (Outdoor modul)
+-----------------------------
+ID	02:00:00:b2:c6:78
+Typ	NAModule1
+Battery state	medium
+Battery level	5342
+Firmware	53
+RF state	high
+RF strength	62
+Last seen	1770573203
+Reachable	true
+Bridge	70:ee:50:28:e4:b0
+Timestamp	1770572844
+Outdoor temperature	4.0 °C
+Humidity	93 %
+
+mv /home/pi/netatmo/netatmo_climate.csv /home/pi/netatmo/netatmo_climate_old.csv
+scp "/Users/Marek/Library/Mobile Documents/com~apple~CloudDocs/Documents/GitHub/Teploty_kotle/netatmo_climate.py" pi@raspberrypi.local:/home/pi/netatmo/
+mv /home/pi/netatmo/netatmo_climate.py /home/pi/netatmo/netatmo_climate_old.py
