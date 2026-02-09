@@ -146,3 +146,12 @@ Humidity	93 %
 mv /home/pi/netatmo/netatmo_climate.csv /home/pi/netatmo/netatmo_climate_old.csv
 scp "/Users/Marek/Library/Mobile Documents/com~apple~CloudDocs/Documents/GitHub/Teploty_kotle/netatmo_climate.py" pi@raspberrypi.local:/home/pi/netatmo/
 mv /home/pi/netatmo/netatmo_climate.py /home/pi/netatmo/netatmo_climate_old.py
+
+curl -X POST https://api.netatmo.com/oauth2/token \
+  -d "grant_type=authorization_code" \
+  -d "client_id=6986ceaef493ff65c90bd0c4" \
+  -d "client_secret=6kay9rA1ZDbqqDlykzti35hZKb7vVY" \
+  -d "code=04f6d69c4fdd731ed06b451f1dba941f" \
+  -d "redirect_uri=https://localhost/callback"
+
+  {"access_token":"57d2c0b1ec135e95028b456c|d98e55861f15cdb697793466effc9bfa","refresh_token":"57d2c0b1ec135e95028b456c|455cb58a92a09e8fb5d4a8383db914fd","expires_in":10800,"expire_in":10800,"scope":["read_station","read_thermostat"]}%  
