@@ -53,7 +53,7 @@ def hokejka3(temp_in: float) -> float:
         return 33.0
 
 
-@st.cache_data
+@st.cache_data(ttl=300)
 def load_netatmo(path: pathlib.Path) -> pd.DataFrame:
     df = pd.read_csv(path)
     # timestamp už máš v sekundách → převedeme na datetime s časovou zónou
@@ -67,7 +67,7 @@ def load_netatmo(path: pathlib.Path) -> pd.DataFrame:
     return df
 
 
-@st.cache_data
+@st.cache_data(ttl=300)
 def load_climate(path: pathlib.Path) -> pd.DataFrame:
     df = pd.read_csv(path)
     df["time_local"] = (
@@ -80,7 +80,7 @@ def load_climate(path: pathlib.Path) -> pd.DataFrame:
     return df
 
 
-@st.cache_data
+@st.cache_data(ttl=300)
 def load_pradelna(path: pathlib.Path) -> pd.DataFrame:
     df = pd.read_csv(path, header=None, names=["cas", "tepl"])
     df["cas"] = pd.to_datetime(df["cas"], format="%Y-%m-%d %H:%M:%S", errors="coerce")
@@ -88,8 +88,7 @@ def load_pradelna(path: pathlib.Path) -> pd.DataFrame:
     df = df.dropna().sort_values("cas").drop_duplicates("cas")
     return df
 
-
-@st.cache_data
+@st.cache_data(ttl=300)
 def load_kotel(path: pathlib.Path) -> pd.DataFrame:
     # CSV nemá hlavičku → header=None
     df = pd.read_csv(path, header=None, names=["Time", "Value"])
