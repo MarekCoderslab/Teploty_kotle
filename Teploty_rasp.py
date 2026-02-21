@@ -18,13 +18,10 @@ st.set_page_config(
 TZ = "Europe/Prague"
 tzinfo = zoneinfo.ZoneInfo(TZ)
 
-BASE_PATH = pathlib.Path("/Users/Marek/Library/Mobile Documents/com~apple~CloudDocs/Documents/GitHub/Teploty_kotle")
-
-
-PATH_NETATMO = BASE_PATH / "netatmo_climate.csv"
-PATH_CLIMATE = BASE_PATH / "netatmo_climate.csv"  # používáš stejný soubor
-PATH_PRADELNA = BASE_PATH / "teplota_pradelna.csv"
-PATH_KOTEL = BASE_PATH / "teplota_log.csv"  # předpoklad – uprav podle reality
+PATH_NETATMO = https://raw.githubusercontent.com/MarekCoderslab/Teploty_kotle/main/data/netatmo_climate.csv"
+PATH_CLIMATE = "https://raw.githubusercontent.com/MarekCoderslab/Teploty_kotle/main/data/netatmo_climate.csv"
+PATH_PRADELNA = "https://raw.githubusercontent.com/MarekCoderslab/Teploty_kotle/main/data/teplota_pradelna.csv"
+PATH_KOTEL = "https://raw.githubusercontent.com/MarekCoderslab/Teploty_kotle/main/data/teplota_log.csv"
 
 # ---------------------------------------------------------
 # FUNKCE
