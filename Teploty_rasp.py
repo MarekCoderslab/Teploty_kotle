@@ -286,37 +286,54 @@ def plot_pradelna(df_pradelna, start_naive, end_naive):
     return fig
 
 
-def build_last_status_block(df_netatmo: pd.DataFrame):
+def build_last_status_block(df_netatmo: pd.DataFrame, df_kotel: pd.DataFrame | None):
     df_net = df_netatmo.sort_values("timestamp")
 
+    # --- Netatmo poslední hodnoty ---
+    last_timestamp = df_net.iloc[-1]["timestamp_str"]
+    last_temp_outdoor = df_net.iloc[-1]["temp_outdoor"]
+    last_pressure = df_net.iloc[-1]["pressure"]
+
+    # --- Start/stop kotle z Netatmo ---
     starts = (df_net["boiler"] == True) & (df_net["boiler"].shift(1) == False)
     stops = (df_net["boiler"] == False) & (df_net["boiler"].shift(1) == True)
 
     last_start = df_net[starts].iloc[-1]["timestamp_str"] if starts.any() else "N/A"
     last_stop = df_net[stops].iloc[-1]["timestamp_str"] if stops.any() else "N/A"
 
-    last_timestamp = df_net.iloc[-1]["timestamp_str"]
-    last_temp_outdoor = df_net.iloc[-1]["temp_outdoor"]
-    last_pressure = df_net.iloc[-1]["pressure"]
+    # --- Poslední hodnota z kotle (CSV) ---
+    if df_kotel is not None and len(df_kotel) > 0:
+        kotel_last_time = df_kotel.iloc[-1]["Time"]
+        kotel_last_value = df_kotel.iloc[-1]["Value"]
+        kotel_line = (
+            f"🔥 Poslední teplota kotle (CSV): **{kotel_last_value:.1f} °C** "
+            f"({kotel_last_time:%d.%m.%Y %H:%M:%S})  \n"
+        )
+    else:
+        kotel_line = "🔥 Poslední teplota kotle (CSV): **N/A**  \n"
 
+    # --- Text start/stop ---
     if last_start <= last_stop:
-        kotel_text = (
+        kotel_state = (
             f"🔥 Poslední start kotle: **{last_start}**  \n"
             f"❄️ Poslední odstavení kotle: **{last_stop}**  \n"
         )
     else:
-        kotel_text = (
+        kotel_state = (
             f"❄️ Poslední odstavení kotle: **{last_stop}**  \n"
             f"🔥 Poslední start kotle: **{last_start}**  \n"
         )
 
+    # --- Výstup ---
     text = (
         f"🕒 Poslední záznam v logu: **{last_timestamp}**  \n"
         f"🌡️ Poslední venkovní teplota: **{last_temp_outdoor:.1f} °C**  \n"
         f"🌬️ Poslední tlak vzduchu: **{last_pressure:.1f} hPa**  \n"
-        f"{kotel_text}"
+        f"{kotel_line}"
+        f"{kotel_state}"
     )
     return text
+
 
 
 # ---------------------------------------------------------
@@ -397,7 +414,7 @@ except Exception:
 # ---------------------------------------------------------
 st.header("Souhrn – poslední stav")
 
-st.markdown(build_last_status_block(df_netatmo))
+st.markdown(build_last_status_block(df_netatmo, df_kotel))
 
 
 
