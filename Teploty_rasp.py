@@ -18,13 +18,16 @@ st.set_page_config(
 # --- CSS pro zarovnání grafů vlevo ---
 st.markdown("""
 <style>
-div.stPyplot {
-    text-align: left;
-    margin-left: 0 !important;
-    padding-left: 0 !important;
+/* Zarovnání všech grafů vlevo */
+[data-testid="stPlot"] {
+    text-align: left !important;
+    display: flex;
+    justify-content: flex-start;
 }
 </style>
 """, unsafe_allow_html=True)
+
+
 
 
 TZ = "Europe/Prague"
