@@ -78,11 +78,48 @@ def load_kotel(path: pathlib.Path) -> pd.DataFrame:
     return df.dropna()
 
 
+def build_last_status_block(df_netatmo: pd.DataFrame):
+    df_net = df_netatmo.sort_values("timestamp")
+
+    starts = (df_net["boiler"] == True) & (df_net["boiler"].shift(1) == False)
+    stops = (df_net["boiler"] == False) & (df_net["boiler"].shift(1) == True)
+
+    last_start = df_net[starts].iloc[-1]["timestamp_str"] if starts.any() else "N/A"
+    last_stop = df_net[stops].iloc[-1]["timestamp_str"] if stops.any() else "N/A"
+
+    last_timestamp = df_net.iloc[-1]["timestamp_str"]
+    last_temp_outdoor = df_net.iloc[-1]["temp_outdoor"]
+    last_pressure = df_net.iloc[-1]["pressure"]
+
+    if last_start <= last_stop:
+        kotel_text = (
+            f"🔥 Poslední start kotle: **{last_start}**  \n"
+            f"❄️ Poslední odstavení kotle: **{last_stop}**  \n"
+        )
+    else:
+        kotel_text = (
+            f"❄️ Poslední odstavení kotle: **{last_stop}**  \n"
+            f"🔥 Poslední start kotle: **{last_start}**  \n"
+        )
+
+    text = (
+        f"🕒 Poslední záznam v logu: **{last_timestamp}**  \n"
+        f"🌡️ Poslední venkovní teplota: **{last_temp_outdoor:.1f} °C**  \n"
+        f"🌬️ Poslední tlak vzduchu: **{last_pressure:.1f} hPa**  \n"
+        f"{kotel_text}"
+    )
+    return text
+
 # ---------------------------------------------------------
 # GRAFICKÉ FUNKCE (NEZMĚNĚNY)
 # ---------------------------------------------------------
-# ... (ponechávám přesně tak, jak jsi poslal – žádné změny)
-
+# Sem vložíš své původní funkce:
+# plot_kotel_vs_netatmo
+# plot_indoor_setpoint_boiler
+# plot_temp_vs_ekviterm
+# plot_pressure
+# plot_pradelna
+# (nepřepisuji je, protože jsi je poslal celé a fungují)
 
 # ---------------------------------------------------------
 # SIDEBAR
