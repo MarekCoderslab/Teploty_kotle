@@ -15,6 +15,18 @@ st.set_page_config(
     layout="wide"
 )
 
+# --- CSS pro zarovnání grafů vlevo ---
+st.markdown("""
+<style>
+div.stPyplot {
+    text-align: left;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 TZ = "Europe/Prague"
 tzinfo = zoneinfo.ZoneInfo(TZ)
 
