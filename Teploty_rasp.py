@@ -306,7 +306,7 @@ def build_last_status_block(df_netatmo: pd.DataFrame, df_kotel: pd.DataFrame | N
         kotel_last_time = df_kotel.iloc[-1]["Time"]
         kotel_last_value = df_kotel.iloc[-1]["Value"]
         kotel_line = (
-            f"🔥 Poslední teplota kotle (CSV): **{kotel_last_value:.1f} °C** "
+            f"Poslední teplota kotle (CSV): **{kotel_last_value:.1f} °C** "
             f"({kotel_last_time:%d.%m.%Y %H:%M:%S})  \n"
         )
     else:
