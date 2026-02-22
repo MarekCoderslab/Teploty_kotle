@@ -315,7 +315,7 @@ if "hours_back" not in st.session_state:
 if "end_date" not in st.session_state:
     st.session_state.end_date = datetime.now(tzinfo).date()
 if "end_hour" not in st.session_state:
-    st.session_state.end_hour = datetime.now(tzinfo).hour
+    st.session_state.end_hour = (datetime.now(tzinfo).hour + 1) % 24
 
 # Vstupy
 hours_back_input = st.sidebar.slider(
