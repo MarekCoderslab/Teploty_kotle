@@ -199,5 +199,4 @@ with col:
         ]].tail(10),
         use_container_width=True
     )
-    st.markdown("---")
-    st.markdown("Created: **marek.coderslab@gmail.com**")
+

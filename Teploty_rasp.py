@@ -480,3 +480,11 @@ st.header("Teplota v prádelně")
 
 fig5 = plot_pradelna(df_pradelna, start_naive, end_naive)
 st.pyplot(fig5)
+
+st.markdown("---")
+st.markdown(
+    "<div style='text-align:center;'>"
+    "<a href='mailto:marek.coderslab@gmail.com'>Created: marek.coderslab@gmail.com</a>"
+    "</div>",
+    unsafe_allow_html=True
+)
