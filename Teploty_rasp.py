@@ -476,7 +476,7 @@ st.pyplot(fig4)
 # ---------------------------------------------------------
 # 6) Teplota v prádelně
 # ---------------------------------------------------------
-st.header("Teplota v prádelně")
+st.header("Teplota u kotle")
 
 fig5 = plot_pradelna(df_pradelna, start_naive, end_naive)
 st.pyplot(fig5)
