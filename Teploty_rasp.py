@@ -277,7 +277,7 @@ def plot_pradelna(df_pradelna, start_naive, end_naive):
     current_temp = df_pradelna["tepl"].iloc[-1]
 
     # rozsah 6 °C = ±3 kolem aktuální teploty
-    ax.set_ylim(current_temp - 3, current_temp + 3)
+    ax.set_ylim(current_temp - 2, current_temp + 2)
 
     ax.set_title("Teplota v prádelně")
 
