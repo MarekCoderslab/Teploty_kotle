@@ -273,7 +273,12 @@ def plot_pressure(df_climate):
 def plot_pradelna(df_pradelna, start_naive, end_naive):
     fig, ax = plt.subplots(figsize=(12, 5))
 
-    ax.set_ylim(auto=True)
+    # aktuální teplota = poslední hodnota v datasetu
+    current_temp = df_pradelna["tepl"].iloc[-1]
+
+    # rozsah 6 °C = ±3 kolem aktuální teploty
+    ax.set_ylim(current_temp - 3, current_temp + 3)
+
     ax.set_title("Teplota v prádelně")
 
     ax.plot(df_pradelna["cas"], df_pradelna["tepl"], linestyle="-", marker=None)
@@ -284,6 +289,7 @@ def plot_pradelna(df_pradelna, start_naive, end_naive):
     fig.autofmt_xdate()
     fig.tight_layout()
     return fig
+
 
 
 def build_last_status_block(df_netatmo: pd.DataFrame, df_kotel: pd.DataFrame | None):
