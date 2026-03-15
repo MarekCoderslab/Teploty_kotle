@@ -273,7 +273,7 @@ def plot_pressure(df_climate):
 def plot_pradelna(df_pradelna, start_naive, end_naive):
     fig, ax = plt.subplots(figsize=(12, 5))
 
-    ax.set_ylim(9, 15)
+    ax.set_ylim(auto=True)
     ax.set_title("Teplota v prádelně")
 
     ax.plot(df_pradelna["cas"], df_pradelna["tepl"], linestyle="-", marker=None)
