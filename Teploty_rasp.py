@@ -245,11 +245,11 @@ def plot_temp_vs_ekviterm(df_netatmo, start_naive, end_naive):
     return fig
 
 
-def plot_pressure(df_climate, start_naive, end_naive):
-    # vyfiltrovat časové okno
+def plot_pressure(df_climate, start_tz, end_tz):
+    # vyfiltrovat časové okno – POZOR: time_local je tz-aware
     df = df_climate[
-        (df_climate["time_local"] >= start_naive) &
-        (df_climate["time_local"] <= end_naive)
+        (df_climate["time_local"] >= start_tz) &
+        (df_climate["time_local"] <= end_tz)
     ]
 
     fig, ax = plt.subplots(figsize=(12, 5))
@@ -274,6 +274,7 @@ def plot_pressure(df_climate, start_naive, end_naive):
     fig.autofmt_xdate()
     fig.tight_layout()
     return fig
+
 
 
 
@@ -483,7 +484,8 @@ st.dataframe(df_show.tail(10), use_container_width=True)
 # ---------------------------------------------------------
 st.header("Tlak vzduchu z Climate")
 
-fig4 = plot_pressure(df_climate, start_naive, end_naive)
+fig4 = plot_pressure(df_climate, start_tz, end_tz)
+
 st.pyplot(fig4)
 
 # ---------------------------------------------------------
