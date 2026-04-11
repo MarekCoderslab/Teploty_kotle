@@ -245,17 +245,23 @@ def plot_temp_vs_ekviterm(df_netatmo, start_naive, end_naive):
     return fig
 
 
-def plot_pressure(df_climate):
+def plot_pressure(df_climate, start_naive, end_naive):
+    # vyfiltrovat časové okno
+    df = df_climate[
+        (df_climate["time_local"] >= start_naive) &
+        (df_climate["time_local"] <= end_naive)
+    ]
+
     fig, ax = plt.subplots(figsize=(12, 5))
 
     ax.plot(
-        df_climate["time"],
-        df_climate["pressure"],
+        df["time_local"],
+        df["pressure"],
         label="Pressure (hPa)",
         color="tab:green",
         linewidth=1.5,
     )
-    ax.scatter(df_climate["time"], df_climate["pressure"], s=8, color="tab:green")
+    ax.scatter(df["time_local"], df["pressure"], s=8, color="tab:green")
 
     ax.set_title("Pressure over time")
     ax.set_xlabel("Čas")
@@ -268,6 +274,7 @@ def plot_pressure(df_climate):
     fig.autofmt_xdate()
     fig.tight_layout()
     return fig
+
 
 
 def plot_pradelna(df_pradelna, start_naive, end_naive):
@@ -476,7 +483,7 @@ st.dataframe(df_show.tail(10), use_container_width=True)
 # ---------------------------------------------------------
 st.header("Tlak vzduchu z Climate")
 
-fig4 = plot_pressure(df_climate)
+fig4 = plot_pressure(df_climate, start_naive, end_naive)
 st.pyplot(fig4)
 
 # ---------------------------------------------------------
