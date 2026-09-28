@@ -33,10 +33,10 @@ st.markdown("""
 TZ = "Europe/Prague"
 tzinfo = zoneinfo.ZoneInfo(TZ)
 
-PATH_NETATMO = "https://raw.githubusercontent.com/MarekCoderslab/Teploty_kotle/main/data/netatmo_climate.csv"
-PATH_CLIMATE = "https://raw.githubusercontent.com/MarekCoderslab/Teploty_kotle/main/data/netatmo_climate.csv"
-PATH_PRADELNA = "https://raw.githubusercontent.com/MarekCoderslab/Teploty_kotle/main/data/teplota_pradelna.csv"
-PATH_KOTEL = "https://raw.githubusercontent.com/MarekCoderslab/Teploty_kotle/main/data/teplota_log.csv"
+PATH_NETATMO = "https://raw.githubusercontent.com/MarekCoderslab/master/data/netatmo_climate.csv"
+PATH_CLIMATE = "https://raw.githubusercontent.com/MarekCoderslab/master/data/netatmo_climate.csv"
+PATH_PRADELNA = "https://raw.githubusercontent.com/MarekCoderslab/master/data/teplota_pradelna.csv"
+PATH_KOTEL = "https://raw.githubusercontent.com/MarekCoderslab/master/data/teplota_log.csv"
 
 # ---------------------------------------------------------
 # FUNKCE
