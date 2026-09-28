@@ -78,14 +78,18 @@ def load_netatmo(path: pathlib.Path) -> pd.DataFrame:
 
     df = pd.read_csv(path)
 
-    # timestamp ze sekund UNIX → lokální čas
+    # Původní timestamp ponecháme beze změny
+    df["timestamp_str"] = (
+        pd.to_datetime(df["timestamp"], unit="s", utc=True)
+        .dt.tz_convert(TZ)
+        .dt.strftime("%d.%m.%Y %H:%M:%S")
+    )
+
+    # Lokální čas pro grafy
     df["time_local"] = (
         pd.to_datetime(df["timestamp"], unit="s", utc=True)
         .dt.tz_convert(TZ)
     )
-
-    # textová podoba času pro stavový blok
-    df["timestamp_str"] = df["time_local"].dt.strftime("%d.%m.%Y %H:%M:%S")
 
     # ekvitermní teplota
     df["Boiler_water_2"] = df["temp_outdoor"].apply(hokejka3)
