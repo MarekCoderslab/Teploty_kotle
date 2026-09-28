@@ -1,11 +1,20 @@
 import pathlib
 import zoneinfo
+
 from datetime import datetime, time, timedelta
+
+import streamlit as st
+import sys
+import os
+
+st.write("Python:", sys.version)
+st.write("Soubor:", os.path.abspath(__file__))
+st.write("Matplotlib test:")
 
 import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
+
 import pandas as pd
-import streamlit as st
 
 # ---------------------------------------------------------
 # ZÁKLADNÍ NASTAVENÍ
