@@ -75,20 +75,15 @@ def hokejka3(temp_in: float) -> float:
 
 @st.cache_data(ttl=300)
 def load_netatmo(path: pathlib.Path) -> pd.DataFrame:
-
     df = pd.read_csv(path)
-
-    # timestamp ze sekund UNIX → lokální čas Europe/Prague
-    df["time_local"] = (
+    # timestamp už máš v sekundách → převedeme na datetime s časovou zónou
+    df["timestamp"] = (
         pd.to_datetime(df["timestamp"], unit="s", utc=True)
         .dt.tz_convert(TZ)
     )
-
-    df["time_local_str"] = df["time_local"].dt.strftime("%d.%m.%Y %H:%M:%S")
-
+    df["timestamp_str"] = df["timestamp"].dt.strftime("%d.%m.%Y %H:%M:%S")
     # ekvitermní teplota
     df["Boiler_water_2"] = df["temp_outdoor"].apply(hokejka3)
-
     return df
 
 
