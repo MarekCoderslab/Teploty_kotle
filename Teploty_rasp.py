@@ -1,11 +1,16 @@
-import sys
-import os
-import subprocess
+import pathlib
 
-st.write("Python:", sys.version)
-st.write("Soubor:", os.path.abspath(__file__))
+import zoneinfo
 
-result = subprocess.run(...)
+from datetime import datetime, time, timedelta
+
+import matplotlib.pyplot as plt
+
+import matplotlib.dates as mdates
+
+import pandas as pd
+
+import streamlit as st
 
 # ---------------------------------------------------------
 # ZÁKLADNÍ NASTAVENÍ
