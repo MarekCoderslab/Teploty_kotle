@@ -6,13 +6,19 @@ from datetime import datetime, time, timedelta
 import streamlit as st
 import sys
 import os
+import subprocess
 
 st.write("Python:", sys.version)
 st.write("Soubor:", os.path.abspath(__file__))
-st.write("Matplotlib test:")
 
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
+result = subprocess.run(
+    [sys.executable, "-m", "pip", "show", "matplotlib"],
+    capture_output=True,
+    text=True
+)
+
+st.write("PIP SHOW MATPLOTLIB:")
+st.code(result.stdout if result.stdout else result.stderr)
 
 import pandas as pd
 
