@@ -208,7 +208,7 @@ def plot_kotel_vs_netatmo(
     # -----------------------------------------------------
     # Kotel
     # -----------------------------------------------------
-kotel = df_kotel.copy()
+    kotel = df_kotel.copy()
     
     # Převedeme sloupec na datetime, kdyby nebyl
     kotel["Time"] = pd.to_datetime(kotel["Time"])
