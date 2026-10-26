@@ -208,12 +208,16 @@ def plot_kotel_vs_netatmo(
     # -----------------------------------------------------
     # Kotel
     # -----------------------------------------------------
-
-    kotel = df_kotel.copy()
-
+kotel = df_kotel.copy()
+    
+    # Převedeme sloupec na datetime, kdyby nebyl
+    kotel["Time"] = pd.to_datetime(kotel["Time"])
+    
     if kotel["Time"].dt.tz is None:
-        kotel["Time"] = kotel["Time"].dt.tz_localize(TZ)
+        # Pokud zóna chybí, bezpečně ji nastavíme a ošetříme případné duplicity při změně času
+        kotel["Time"] = kotel["Time"].dt.tz_localize(TZ, ambiguous='NaT', nonexistent='shift_forward')
     else:
+        # Pokud už zónu má, převedeme ji na požadovanou
         kotel["Time"] = kotel["Time"].dt.tz_convert(TZ)
 
     kotel = kotel[
