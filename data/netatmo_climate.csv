@@ -2608,3 +2608,5 @@ timestamp,temp_indoor,temp_outdoor,setpoint,boiler,pressure
 1793565308,22.1,7.2,22,False,1031.5
 1793565613,22.1,7.2,22,False,1031.5
 1793565911,22.1,7.2,22,False,1031.5
+1793566212,22.1,7.2,22,False,1031.4
+1793566507,22.1,7.2,22,False,1031.4
