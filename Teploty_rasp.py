@@ -77,9 +77,9 @@ def hokejka3(temp_in):
     """Ekvitermní křivka."""
 
     if temp_in <= 10:
-        return -0.233333 * temp_in + 35.333333
+        return -0.33333 * temp_in + 43.333333
 
-    return 33.0
+    return 40.0
 
 
 # =========================================================
